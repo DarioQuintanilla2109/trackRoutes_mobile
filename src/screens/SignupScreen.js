@@ -1,25 +1,57 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, StyleSheet, Keyboard } from 'react-native'
 import { Text, Input, Button } from 'react-native-elements'
 import Spacer from '../components/Spacer'
 
 const SignupScreen = ({ navigation }) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+
   return (
-    <>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        marginBottom: 200,
+      }}
+    >
       <Spacer>
-        <Text h3> Sign Up for Tracker</Text>
+        <Text style={{ textAlign: 'center' }} h3>
+          {' '}
+          Sign Up for Tracker
+        </Text>
       </Spacer>
       <Spacer>
-        <Input label='Email' />
+        <Input
+          autoCapitalize='none'
+          autoCorrect={false}
+          label='Email'
+          value={email}
+          onChangeText={newEmail => setEmail(newEmail)} // same as onChangeText = {setEmail}
+        />
       </Spacer>
       <Spacer>
-        <Input label='Password' />
+        <Input
+          autoCapitalize='none'
+          autoCorrect={false}
+          label='Password'
+          label='Password'
+          value={password}
+          secureTextEntry
+          onChangeText={newPassword => setPassword(newPassword)}
+        />
       </Spacer>
       <Spacer>
         <Button style={styles.buttonStyle} title='Sign Up' raised />
       </Spacer>
-    </>
+    </View>
   )
+}
+
+SignupScreen.navigationOptions = () => {
+  return {
+    headerShown: false,
+  }
 }
 
 const styles = StyleSheet.create({
@@ -28,6 +60,10 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     color: 'rgb(0,255,0)',
+  },
+  container: {
+    borderColor: 'red',
+    borderWidth: 10,
   },
 })
 
