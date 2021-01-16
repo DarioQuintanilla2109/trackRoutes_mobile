@@ -44,6 +44,7 @@ const SignupScreen = ({ navigation }) => {
           onChangeText={newPassword => setPassword(newPassword)}
         />
       </Spacer>
+
       <Spacer>
         <Button
           style={styles.buttonStyle}
@@ -52,6 +53,11 @@ const SignupScreen = ({ navigation }) => {
           onPress={() => signup({ email, password })}
         />
       </Spacer>
+      {state.errorMessage ? (
+        <Text style={{ textAlign: 'center', color: 'red', fontSize: 16 }}>
+          {state.errorMessage}
+        </Text>
+      ) : null}
     </View>
   )
 }
