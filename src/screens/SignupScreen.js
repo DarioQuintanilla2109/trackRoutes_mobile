@@ -1,14 +1,11 @@
-import React, { useState, useContext } from 'react'
-import { View, StyleSheet, Keyboard } from 'react-native'
-import { Text, Input, Button } from 'react-native-elements'
-import Spacer from '../components/Spacer'
+import React, { useContext } from 'react'
+import { View, StyleSheet } from 'react-native'
+import NavLink from '../components/NavLink'
 import { Context as AuthContext } from '../context/AuthContext'
+import AuthForm from '../components/AuthForm'
 
 const SignupScreen = ({ navigation }) => {
   const { state, signup } = useContext(AuthContext)
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   return (
     <View
@@ -18,46 +15,13 @@ const SignupScreen = ({ navigation }) => {
         marginBottom: 200,
       }}
     >
-      <Spacer>
-        <Text style={{ textAlign: 'center' }} h3>
-          {' '}
-          Sign Up for Tracker
-        </Text>
-      </Spacer>
-      <Spacer>
-        <Input
-          autoCapitalize='none'
-          autoCorrect={false}
-          label='Email'
-          value={email}
-          onChangeText={newEmail => setEmail(newEmail)} // same as onChangeText = {setEmail}
-        />
-      </Spacer>
-      <Spacer>
-        <Input
-          autoCapitalize='none'
-          autoCorrect={false}
-          label='Password'
-          label='Password'
-          value={password}
-          secureTextEntry
-          onChangeText={newPassword => setPassword(newPassword)}
-        />
-      </Spacer>
-
-      <Spacer>
-        <Button
-          style={styles.buttonStyle}
-          title='Sign Up'
-          raised
-          onPress={() => signup({ email, password })}
-        />
-      </Spacer>
-      {state.errorMessage ? (
-        <Text style={{ textAlign: 'center', color: 'red', fontSize: 16 }}>
-          {state.errorMessage}
-        </Text>
-      ) : null}
+      <AuthForm
+        headerText='Sign up for Tracker'
+        errorMessage={state.errorMessage}
+        submitButtonText='Sign up'
+        onSubmit={signup} //could just call signup
+      />
+      <NavLink routeName='Signin' text='Already have an account? Sign in' />
     </View>
   )
 }
@@ -69,15 +33,9 @@ SignupScreen.navigationOptions = () => {
 }
 
 const styles = StyleSheet.create({
-  viewContainer: {
-    flex: 1,
-  },
-  buttonStyle: {
-    color: 'rgb(0,255,0)',
-  },
-  container: {
-    borderColor: 'red',
-    borderWidth: 10,
+  link: {
+    color: 'blue',
+    textAlign: 'center',
   },
 })
 
