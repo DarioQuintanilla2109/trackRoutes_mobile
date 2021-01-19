@@ -5,7 +5,7 @@ import { Context as AuthContext } from '../context/AuthContext'
 import NavLink from '../components/NavLink'
 
 const SigninScreen = ({ navigation }) => {
-  const { state, signup } = useContext(AuthContext)
+  const { state, signin } = useContext(AuthContext)
   return (
     <View
       style={{
@@ -18,7 +18,7 @@ const SigninScreen = ({ navigation }) => {
         headerText='Sign in for Tracker'
         errorMessage={state.errorMessage}
         submitButtonText='Sign in'
-        onSubmit={signup} //could just call signup
+        onSubmit={signin} //could just call signup
       />
       <NavLink routeName='Signup' text='Dont have an account? Sign up' />
     </View>

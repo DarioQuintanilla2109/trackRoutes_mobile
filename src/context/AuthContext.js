@@ -8,7 +8,7 @@ const authReducer = (state, action) => {
   switch (action.type) {
     case 'add_error':
       return { ...state, errorMessage: action.payload }
-    case 'signup':
+    case 'signin':
       return { errorMessage: '', token: action.payload }
     default:
       return state
@@ -27,7 +27,7 @@ const signup = dispatch => {
 
       await AsyncStorage.setItem('token', resp.data.token)
 
-      dispatch({ type: 'signup', payload: resp.data.token })
+      dispatch({ type: 'signin', payload: resp.data.token })
 
       navigate('TrackList')
     } catch (err) {
@@ -43,7 +43,22 @@ const signin = dispatch => {
   //try to sign in
   //handle success, update state
   //handle failure
-  return ({ email, password }) => {}
+  return async ({ email, password }) => {
+    try {
+      const resp = await trackerAPI.post('/signin', { email, password })
+
+      await AsyncStorage.setItem('token', resp.data.token)
+
+      dispatch({ type: 'signin', payload: resp.data.token })
+
+      navigate('TrackList')
+    } catch (err) {
+      dispatch({
+        type: 'add_error',
+        payload: `${err}`,
+      })
+    }
+  }
 }
 
 const signout = dispatch => {
