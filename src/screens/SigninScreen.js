@@ -3,9 +3,11 @@ import { View, StyleSheet } from 'react-native'
 import AuthForm from '../components/AuthForm'
 import { Context as AuthContext } from '../context/AuthContext'
 import NavLink from '../components/NavLink'
+import { NavigationEvents } from 'react-navigation'
+import { useFocusEffect } from '@react-navigation/native'
 
-const SigninScreen = ({ navigation }) => {
-  const { state, signin } = useContext(AuthContext)
+const SigninScreen = () => {
+  const { state, signin, clearErrorMessage } = useContext(AuthContext)
   return (
     <View
       style={{
@@ -14,6 +16,7 @@ const SigninScreen = ({ navigation }) => {
         marginBottom: 200,
       }}
     >
+      <NavigationEvents onWillBlur={clearErrorMessage} />
       <AuthForm
         headerText='Sign in for Tracker'
         errorMessage={state.errorMessage}
