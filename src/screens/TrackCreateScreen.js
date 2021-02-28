@@ -10,6 +10,10 @@ import Map from '../components/Map'
 import '../_mockLocation'
 import { Context as LocationContext } from '../context/LocationContext'
 
+/* 
+  TrackScreateScreen function takes in Context from 
+*/
+
 const TrackCreateScreen = () => {
   const { addLocation } = useContext(LocationContext)
 
