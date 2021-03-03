@@ -5,16 +5,20 @@ import useLocation from '../hooks/useLocation'
 import Map from '../components/Map'
 import '../_mockLocation'
 import { Context as LocationContext } from '../context/LocationContext'
+import TrackForm from '../components/TrackForm'
 
 const TrackCreateScreen = ({ isFocused }) => {
-  const { addLocation } = useContext(LocationContext)
-  const [err] = useLocation(isFocused, addLocation)
+  const { state, addLocation } = useContext(LocationContext)
+  const [err] = useLocation(isFocused, location => {
+    addLocation(location, state.recording)
+  })
 
   console.log(isFocused)
   return (
     <SafeAreaView>
       <Map />
       {err ? <Text>Please enable location</Text> : null}
+      <TrackForm />
     </SafeAreaView>
   )
 }
