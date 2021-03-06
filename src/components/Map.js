@@ -33,7 +33,7 @@ const Map = () => {
 
 const styles = StyleSheet.create({
   map: {
-    height: 500,
+    height: 400,
   },
 })
 
