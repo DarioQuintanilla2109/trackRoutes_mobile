@@ -36,7 +36,11 @@ const TrackForm = () => {
       </Spacer>
       <Spacer>
         {!recording && locations.length ? (
-          <Button title='Save Recording' onPress={saveTrack} />
+          <Button
+            buttonStyle={{ backgroundColor: 'green' }}
+            title='Save Recording'
+            onPress={saveTrack}
+          />
         ) : null}
       </Spacer>
     </>
