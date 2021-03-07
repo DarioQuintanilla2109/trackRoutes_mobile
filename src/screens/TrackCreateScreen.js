@@ -22,7 +22,6 @@ const TrackCreateScreen = ({ isFocused }) => {
 
   const [err] = useLocation(isFocused || recording, callback)
 
-  console.log(isFocused)
   return (
     <SafeAreaView>
       <Map />
