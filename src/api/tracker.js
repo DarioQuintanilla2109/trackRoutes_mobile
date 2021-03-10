@@ -2,7 +2,7 @@ import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const instance = axios.create({
-  baseURL: 'http://bb3c974bb736.ngrok.io',
+  baseURL: 'http://969423d1a19c.ngrok.io',
 })
 
 //if we have token will be automcatically added into our request
