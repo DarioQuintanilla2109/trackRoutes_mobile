@@ -12,22 +12,15 @@ import { Context as TrackContext } from '../context/TrackContext'
 import { ListItem } from 'react-native-elements'
 import { MIAMI } from '../images/ma'
 import { SwipeListView, SwipeRow } from 'react-native-swipe-list-view'
+import { AntDesign } from '@expo/vector-icons'
 
 const TrackListScreen = ({ navigation }) => {
   const renderHiddenItem = (data, rowMap) => (
     <View style={styles.rowBack}>
-      <Text>Left</Text>
-      <TouchableOpacity
-        style={[styles.backRightBtn, styles.backRightBtnLeft]}
-        onPress={() => null}
-      >
-        <Text style={styles.backTextWhite}>Close</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[styles.backRightBtn, styles.backRightBtnRight]}
-        onPress={() => null}
-      >
-        <Text style={styles.backTextWhite}>Delete</Text>
+      <TouchableOpacity onPress={() => null}>
+        <Text style={[styles.backTextWhite, styles.backRightBtnLeft]}>
+          <AntDesign name='delete' size={24} color='black' />
+        </Text>
       </TouchableOpacity>
     </View>
   )
@@ -40,8 +33,8 @@ const TrackListScreen = ({ navigation }) => {
 
       <SwipeListView
         renderHiddenItem={renderHiddenItem}
-        disableRightSwipe={true}
-        rightOpenValue={-150}
+        disableLeftSwipe={true}
+        leftOpenValue={100}
         previewRowKey={'0'}
         previewOpenValue={-40}
         previewOpenDelay={3000}
@@ -49,7 +42,7 @@ const TrackListScreen = ({ navigation }) => {
         keyExtractor={item => item._id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
+            <View
               onPress={() =>
                 navigation.navigate('TrackDetail', { _id: item._id })
               }
@@ -60,7 +53,7 @@ const TrackListScreen = ({ navigation }) => {
                 </ListItem.Content>
                 <ListItem.Chevron />
               </ListItem>
-            </TouchableOpacity>
+            </View>
           )
         }}
       />
@@ -87,6 +80,18 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginBottom: 20,
     margin: 0,
+  },
+  rowBack: {
+    alignItems: 'center',
+    backgroundColor: '#ffa62b',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 15,
+  },
+  backRightBtnLeft: {
+    backgroundColor: '#ffa62b',
+    left: 10,
   },
 })
 
