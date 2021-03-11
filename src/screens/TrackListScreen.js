@@ -11,13 +11,40 @@ import { NavigationEvents } from 'react-navigation'
 import { Context as TrackContext } from '../context/TrackContext'
 import { ListItem } from 'react-native-elements'
 import { MIAMI } from '../images/ma'
+import { SwipeListView, SwipeRow } from 'react-native-swipe-list-view'
+
 const TrackListScreen = ({ navigation }) => {
+  const renderHiddenItem = (data, rowMap) => (
+    <View style={styles.rowBack}>
+      <Text>Left</Text>
+      <TouchableOpacity
+        style={[styles.backRightBtn, styles.backRightBtnLeft]}
+        onPress={() => null}
+      >
+        <Text style={styles.backTextWhite}>Close</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.backRightBtn, styles.backRightBtnRight]}
+        onPress={() => null}
+      >
+        <Text style={styles.backTextWhite}>Delete</Text>
+      </TouchableOpacity>
+    </View>
+  )
+
   const { state, fetchTracks } = useContext(TrackContext)
-  console.log(state)
+  //console.log(state)
   return (
     <>
       <NavigationEvents onWillFocus={fetchTracks} />
-      <FlatList
+
+      <SwipeListView
+        renderHiddenItem={renderHiddenItem}
+        disableRightSwipe={true}
+        rightOpenValue={-150}
+        previewRowKey={'0'}
+        previewOpenValue={-40}
+        previewOpenDelay={3000}
         data={state}
         keyExtractor={item => item._id}
         renderItem={({ item }) => {
