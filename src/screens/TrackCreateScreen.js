@@ -6,7 +6,7 @@ import Map from '../components/Map'
 import '../_mockLocation'
 import { Context as LocationContext } from '../context/LocationContext'
 import TrackForm from '../components/TrackForm'
-
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 const TrackCreateScreen = ({ isFocused }) => {
   const {
     state: { recording },
@@ -29,6 +29,18 @@ const TrackCreateScreen = ({ isFocused }) => {
       <TrackForm />
     </SafeAreaView>
   )
+}
+
+TrackCreateScreen.navigationOptions = {
+  tabBarIcon: (
+    <MaterialCommunityIcons
+      style={{ marginTop: 20 }}
+      name='record-rec'
+      size={48}
+      color='red'
+    />
+  ),
+  title: '',
 }
 
 const styles = StyleSheet.create({})

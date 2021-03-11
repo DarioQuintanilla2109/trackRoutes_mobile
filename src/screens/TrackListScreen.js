@@ -5,11 +5,12 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  Image,
 } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import { Context as TrackContext } from '../context/TrackContext'
 import { ListItem } from 'react-native-elements'
-
+import { MIAMI } from '../images/ma'
 const TrackListScreen = ({ navigation }) => {
   const { state, fetchTracks } = useContext(TrackContext)
   console.log(state)
@@ -40,6 +41,26 @@ const TrackListScreen = ({ navigation }) => {
   )
 }
 
-const styles = StyleSheet.create({})
+TrackListScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerLeft: () => (
+      <TouchableOpacity onPress={() => navigation.navigate('TrackList')}>
+        <Image style={styles.imgStyle} source={MIAMI} />
+      </TouchableOpacity>
+    ),
+    headerStyle: {},
+  }
+}
+
+const styles = StyleSheet.create({
+  imgStyle: {
+    height: 60,
+    width: 60,
+    marginLeft: 15,
+    borderRadius: 50,
+    marginBottom: 20,
+    margin: 0,
+  },
+})
 
 export default TrackListScreen
