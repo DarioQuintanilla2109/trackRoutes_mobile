@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { SafeAreaView, withNavigationFocus } from 'react-navigation'
 import useLocation from '../hooks/useLocation'
 import Map from '../components/Map'
@@ -7,6 +7,7 @@ import '../_mockLocation'
 import { Context as LocationContext } from '../context/LocationContext'
 import TrackForm from '../components/TrackForm'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
+
 const TrackCreateScreen = ({ isFocused }) => {
   const {
     state: { recording },
@@ -33,14 +34,11 @@ const TrackCreateScreen = ({ isFocused }) => {
 
 TrackCreateScreen.navigationOptions = {
   tabBarIcon: (
-    <MaterialCommunityIcons
-      style={{ marginTop: 20 }}
-      name='record-rec'
-      size={48}
-      color='red'
-    />
+    <TouchableOpacity>
+      <MaterialCommunityIcons name='record-rec' size={36} color='red' />
+    </TouchableOpacity>
   ),
-  title: '',
+  title: 'Record',
 }
 
 const styles = StyleSheet.create({})

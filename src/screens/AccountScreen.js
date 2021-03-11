@@ -6,6 +6,7 @@ import { Context as AuthContext } from '../context/AuthContext'
 import { SafeAreaView } from 'react-navigation'
 import { MaterialIcons } from '@expo/vector-icons'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+
 const AccountScreen = () => {
   const { signout } = useContext(AuthContext)
 
@@ -22,15 +23,9 @@ const AccountScreen = () => {
 AccountScreen.navigationOptions = {
   tabBarIcon: (
     <TouchableOpacity>
-      <MaterialIcons
-        style={{ marginTop: 30 }}
-        name='settings'
-        size={24}
-        color='black'
-      />
+      <MaterialIcons name='settings' size={36} color='#fa824c' />
     </TouchableOpacity>
   ),
-  title: '',
 }
 
 const styles = StyleSheet.create({})

@@ -14,6 +14,7 @@ import ResolveAuthScreen from './src/screens/ResolveAuth'
 import { Provider as LocationProvider } from './src/context/LocationContext'
 import { Provider as TrackProvider } from './src/context/TrackContext'
 import { FontAwesome5 } from '@expo/vector-icons'
+import { Text, TouchableOpacity } from 'react-native'
 
 const trackListFlow = createStackNavigator({
   TrackList: TrackListScreen,
@@ -21,8 +22,18 @@ const trackListFlow = createStackNavigator({
 })
 
 trackListFlow.navigationOptions = {
-  tabBarIcon: <FontAwesome5 name='running' size={24} color='black' />,
-  title: '',
+  tabBarIcon: (
+    <TouchableOpacity>
+      <FontAwesome5
+        style={{ marginTop: 5 }}
+        name='running'
+        size={36}
+        color='#3c91e6'
+      />
+    </TouchableOpacity>
+  ),
+  title: 'Tracks',
+  inactiveTintColor: '#152238',
 }
 
 const switchNavigator = createSwitchNavigator({
