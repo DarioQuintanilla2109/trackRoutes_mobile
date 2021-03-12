@@ -18,7 +18,7 @@ const SigninScreen = () => {
     >
       <NavigationEvents onWillBlur={clearErrorMessage} />
       <AuthForm
-        headerText='Sign in for Tracker'
+        headerText='Welcome back'
         errorMessage={state.errorMessage}
         submitButtonText='Sign in'
         onSubmit={signin} //could just call signup
@@ -30,9 +30,6 @@ const SigninScreen = () => {
 
 SigninScreen.navigationOptions = () => {
   return {
-    viewContainer: {
-      flex: 1,
-    },
     headerShown: false,
   }
 }

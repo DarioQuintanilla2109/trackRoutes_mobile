@@ -6,6 +6,7 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
+  Button,
 } from 'react-native'
 import { NavigationEvents } from 'react-navigation'
 import { Context as TrackContext } from '../context/TrackContext'
@@ -13,6 +14,7 @@ import { ListItem } from 'react-native-elements'
 import { MIAMI } from '../images/ma'
 import { SwipeListView, SwipeRow } from 'react-native-swipe-list-view'
 import { AntDesign } from '@expo/vector-icons'
+import { TouchableHighlight } from 'react-native-gesture-handler'
 
 const TrackListScreen = ({ navigation }) => {
   const renderHiddenItem = (data, rowMap) => (
@@ -32,6 +34,7 @@ const TrackListScreen = ({ navigation }) => {
       <NavigationEvents onWillFocus={fetchTracks} />
 
       <SwipeListView
+        style={styles.container}
         renderHiddenItem={renderHiddenItem}
         disableLeftSwipe={true}
         leftOpenValue={100}
@@ -42,7 +45,7 @@ const TrackListScreen = ({ navigation }) => {
         keyExtractor={item => item._id}
         renderItem={({ item }) => {
           return (
-            <View
+            <TouchableHighlight
               onPress={() =>
                 navigation.navigate('TrackDetail', { _id: item._id })
               }
@@ -53,7 +56,7 @@ const TrackListScreen = ({ navigation }) => {
                 </ListItem.Content>
                 <ListItem.Chevron />
               </ListItem>
-            </View>
+            </TouchableHighlight>
           )
         }}
       />
@@ -68,7 +71,7 @@ TrackListScreen.navigationOptions = ({ navigation }) => {
         <Image style={styles.imgStyle} source={MIAMI} />
       </TouchableOpacity>
     ),
-    headerStyle: {},
+    title: '',
   }
 }
 
@@ -92,6 +95,14 @@ const styles = StyleSheet.create({
   backRightBtnLeft: {
     backgroundColor: '#ffa62b',
     left: 10,
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#f4f0ff',
+  },
+  list: {
+    marginHorizontal: 20,
+    padding: 30,
   },
 })
 

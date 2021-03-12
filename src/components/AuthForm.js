@@ -9,7 +9,7 @@ const AuthForm = ({ headerText, errorMessage, onSubmit, submitButtonText }) => {
   return (
     <>
       <Spacer>
-        <Text style={{ textAlign: 'center' }} h3>
+        <Text style={{ textAlign: 'center', color: 'blue' }} h3>
           {headerText}
         </Text>
       </Spacer>

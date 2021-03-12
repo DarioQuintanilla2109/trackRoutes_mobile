@@ -24,7 +24,7 @@ const TrackCreateScreen = ({ isFocused }) => {
   const [err] = useLocation(isFocused || recording, callback)
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.safeView}>
       <Map />
       {err ? <Text>Please enable location</Text> : null}
       <TrackForm />
@@ -41,6 +41,11 @@ TrackCreateScreen.navigationOptions = {
   title: 'Record',
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  safeView: {
+    flex: 1,
+    backgroundColor: '#f4f0ff',
+  },
+})
 
 export default withNavigationFocus(TrackCreateScreen)

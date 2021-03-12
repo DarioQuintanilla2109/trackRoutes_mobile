@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/maWhite.jpg",
       "resizeMode": "contain",
-      "backgroundColor": "white"
+      "backgroundColor": "#FFFFFF"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
